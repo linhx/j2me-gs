@@ -17,8 +17,11 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Fields ">//GEN-BEGIN:|fields|0|
     private Command exitCommand;
+    private Command okCommand;
     private Form form;
     private StringItem stringItem;
+    private TextField username;
+    private TextField Password;
 //</editor-fold>//GEN-END:|fields|0|
 
     /**
@@ -106,11 +109,16 @@ if (displayable == form) {//GEN-BEGIN:|7-commandAction|1|19-preAction
                 // write pre-action user code here
 exitMIDlet();//GEN-LINE:|7-commandAction|2|19-postAction
                 // write post-action user code here
-}//GEN-BEGIN:|7-commandAction|3|7-postCommandAction
-        }//GEN-END:|7-commandAction|3|7-postCommandAction
+} else if (command == okCommand) {//GEN-LINE:|7-commandAction|3|26-preAction
+                // write pre-action user code here
+                this.login();
+//GEN-LINE:|7-commandAction|4|26-postAction
+ // write post-action user code here
+}//GEN-BEGIN:|7-commandAction|5|7-postCommandAction
+        }//GEN-END:|7-commandAction|5|7-postCommandAction
         // write post-action user code here
-}//GEN-BEGIN:|7-commandAction|4|
-//</editor-fold>//GEN-END:|7-commandAction|4|
+}//GEN-BEGIN:|7-commandAction|6|
+//</editor-fold>//GEN-END:|7-commandAction|6|
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: exitCommand ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -139,8 +147,9 @@ exitCommand = new Command("Exit", Command.EXIT, 0);//GEN-LINE:|18-getter|1|18-po
         if (form == null) {
 //GEN-END:|14-getter|0|14-preInit
             // write pre-init user code here
-form = new Form("Welcome", new Item[]{getStringItem()});//GEN-BEGIN:|14-getter|1|14-postInit
+form = new Form("Welcome", new Item[]{getStringItem(), getUsername(), getPassword()});//GEN-BEGIN:|14-getter|1|14-postInit
             form.addCommand(getExitCommand());
+            form.addCommand(getOkCommand());
             form.setCommandListener(this);//GEN-END:|14-getter|1|14-postInit
             // write post-init user code here
 }//GEN-BEGIN:|14-getter|2|
@@ -164,6 +173,57 @@ stringItem = new StringItem("Hello", "Hello, World!");//GEN-LINE:|16-getter|1|16
         return stringItem;
     }
 //</editor-fold>//GEN-END:|16-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: username ">//GEN-BEGIN:|23-getter|0|23-preInit
+    /**
+     * Returns an initialized instance of username component.
+     *
+     * @return the initialized component instance
+     */
+    public TextField getUsername() {
+        if (username == null) {
+//GEN-END:|23-getter|0|23-preInit
+ // write pre-init user code here
+username = new TextField("Username", "", 32, TextField.ANY);//GEN-LINE:|23-getter|1|23-postInit
+ // write post-init user code here
+}//GEN-BEGIN:|23-getter|2|
+        return username;
+    }
+//</editor-fold>//GEN-END:|23-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: Password ">//GEN-BEGIN:|24-getter|0|24-preInit
+    /**
+     * Returns an initialized instance of Password component.
+     *
+     * @return the initialized component instance
+     */
+    public TextField getPassword() {
+        if (Password == null) {
+//GEN-END:|24-getter|0|24-preInit
+ // write pre-init user code here
+Password = new TextField("Password", "", 32, TextField.ANY);//GEN-LINE:|24-getter|1|24-postInit
+ // write post-init user code here
+}//GEN-BEGIN:|24-getter|2|
+        return Password;
+    }
+//</editor-fold>//GEN-END:|24-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: okCommand ">//GEN-BEGIN:|25-getter|0|25-preInit
+    /**
+     * Returns an initialized instance of okCommand component.
+     *
+     * @return the initialized component instance
+     */
+    public Command getOkCommand() {
+        if (okCommand == null) {
+//GEN-END:|25-getter|0|25-preInit
+ // write pre-init user code here
+okCommand = new Command("Ok", Command.OK, 0);//GEN-LINE:|25-getter|1|25-postInit
+ // write post-init user code here
+}//GEN-BEGIN:|25-getter|2|
+        return okCommand;
+    }
+//</editor-fold>//GEN-END:|25-getter|2|
 
     /**
      * Returns a display instance.
@@ -213,4 +273,7 @@ stringItem = new StringItem("Hello", "Hello, World!");//GEN-LINE:|16-getter|1|16
     public void destroyApp(boolean unconditional) {
     }
     
+    public void login () {
+        this.stringItem.setText("Logged in");
+    }
 }
