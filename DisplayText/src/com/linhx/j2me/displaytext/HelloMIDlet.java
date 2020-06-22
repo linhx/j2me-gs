@@ -7,6 +7,7 @@ package com.linhx.j2me.displaytext;
 
 import javax.microedition.midlet.*;
 import javax.microedition.lcdui.*;
+import org.netbeans.microedition.lcdui.pda.FileBrowser;
 
 /**
  * @author linhn
@@ -22,6 +23,7 @@ public class HelloMIDlet extends MIDlet implements CommandListener {
     private StringItem stringItem;
     private TextField username;
     private TextField Password;
+    private FileBrowser fileBrowser;
 //</editor-fold>//GEN-END:|fields|0|
 
     /**
@@ -104,21 +106,27 @@ Display display = getDisplay();//GEN-BEGIN:|5-switchDisplayable|1|5-postSwitch
     public void commandAction(Command command, Displayable displayable) {
 //GEN-END:|7-commandAction|0|7-preCommandAction
         // write pre-action user code here
-if (displayable == form) {//GEN-BEGIN:|7-commandAction|1|19-preAction
-            if (command == exitCommand) {//GEN-END:|7-commandAction|1|19-preAction
+if (displayable == fileBrowser) {//GEN-BEGIN:|7-commandAction|1|31-preAction
+            if (command == FileBrowser.SELECT_FILE_COMMAND) {//GEN-END:|7-commandAction|1|31-preAction
                 // write pre-action user code here
-exitMIDlet();//GEN-LINE:|7-commandAction|2|19-postAction
+//GEN-LINE:|7-commandAction|2|31-postAction
                 // write post-action user code here
-} else if (command == okCommand) {//GEN-LINE:|7-commandAction|3|26-preAction
+}//GEN-BEGIN:|7-commandAction|3|19-preAction
+} else if (displayable == form) {
+    if (command == exitCommand) {//GEN-END:|7-commandAction|3|19-preAction
+                // write pre-action user code here
+exitMIDlet();//GEN-LINE:|7-commandAction|4|19-postAction
+                // write post-action user code here
+} else if (command == okCommand) {//GEN-LINE:|7-commandAction|5|26-preAction
                 // write pre-action user code here
                 this.login();
-//GEN-LINE:|7-commandAction|4|26-postAction
+//GEN-LINE:|7-commandAction|6|26-postAction
  // write post-action user code here
-}//GEN-BEGIN:|7-commandAction|5|7-postCommandAction
-        }//GEN-END:|7-commandAction|5|7-postCommandAction
+}//GEN-BEGIN:|7-commandAction|7|7-postCommandAction
+        }//GEN-END:|7-commandAction|7|7-postCommandAction
         // write post-action user code here
-}//GEN-BEGIN:|7-commandAction|6|
-//</editor-fold>//GEN-END:|7-commandAction|6|
+}//GEN-BEGIN:|7-commandAction|8|
+//</editor-fold>//GEN-END:|7-commandAction|8|
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Getter: exitCommand ">//GEN-BEGIN:|18-getter|0|18-preInit
     /**
@@ -224,6 +232,25 @@ okCommand = new Command("Ok", Command.OK, 0);//GEN-LINE:|25-getter|1|25-postInit
         return okCommand;
     }
 //</editor-fold>//GEN-END:|25-getter|2|
+
+//<editor-fold defaultstate="collapsed" desc=" Generated Getter: fileBrowser ">//GEN-BEGIN:|29-getter|0|29-preInit
+    /**
+     * Returns an initialized instance of fileBrowser component.
+     *
+     * @return the initialized component instance
+     */
+    public FileBrowser getFileBrowser() {
+        if (fileBrowser == null) {//GEN-END:|29-getter|0|29-preInit
+ // write pre-init user code here
+fileBrowser = new FileBrowser(getDisplay());//GEN-BEGIN:|29-getter|1|29-postInit
+            fileBrowser.setTitle("fileBrowser");
+            fileBrowser.setCommandListener(this);
+            fileBrowser.addCommand(FileBrowser.SELECT_FILE_COMMAND);//GEN-END:|29-getter|1|29-postInit
+ // write post-init user code here
+}//GEN-BEGIN:|29-getter|2|
+        return fileBrowser;
+    }
+//</editor-fold>//GEN-END:|29-getter|2|
 
     /**
      * Returns a display instance.
