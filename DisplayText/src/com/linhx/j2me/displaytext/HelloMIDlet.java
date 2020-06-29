@@ -15,6 +15,7 @@ import org.netbeans.microedition.lcdui.pda.FileBrowser;
 public class HelloMIDlet extends MIDlet implements CommandListener {
     
     private boolean midletPaused = false;
+    private Alert alert;
 
 //<editor-fold defaultstate="collapsed" desc=" Generated Fields ">//GEN-BEGIN:|fields|0|
     private Command exitCommand;
@@ -240,7 +241,8 @@ okCommand = new Command("Ok", Command.OK, 0);//GEN-LINE:|25-getter|1|25-postInit
      * @return the initialized component instance
      */
     public FileBrowser getFileBrowser() {
-        if (fileBrowser == null) {//GEN-END:|29-getter|0|29-preInit
+        if (fileBrowser == null) {
+//GEN-END:|29-getter|0|29-preInit
  // write pre-init user code here
 fileBrowser = new FileBrowser(getDisplay());//GEN-BEGIN:|29-getter|1|29-postInit
             fileBrowser.setTitle("fileBrowser");
@@ -301,6 +303,7 @@ fileBrowser = new FileBrowser(getDisplay());//GEN-BEGIN:|29-getter|1|29-postInit
     }
     
     public void login () {
-        this.stringItem.setText("Logged in");
+        this.alert = new Alert("your account may be stolen");
+        this.getDisplay().setCurrent(alert);
     }
 }
